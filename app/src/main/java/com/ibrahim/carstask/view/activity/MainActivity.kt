@@ -1,19 +1,21 @@
 package com.ibrahim.carstask.view.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
+import com.ibrahim.carstask.R
 import com.ibrahim.carstask.adapter.CarAdapter
 import com.ibrahim.carstask.click.CarClick
-import com.ibrahim.carstask.R
 import com.ibrahim.carstask.data.model.CarModel
 import com.ibrahim.carstask.network.NetworkState
 import com.ibrahim.carstask.utils.ProgressLoading
 import com.ibrahim.carstask.viewmodel.CarViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() , CarClick {
 
@@ -37,7 +39,16 @@ class MainActivity : AppCompatActivity() , CarClick {
         recyclerView_cars.layoutManager = LinearLayoutManager(this)
         recyclerView_cars.setHasFixedSize(true)
         recyclerView_cars.adapter = adapter
+
+
+
+        swipe_refresh.setOnRefreshListener { makeSwipe() }
     } // fun of initView
+
+    private fun makeSwipe() {
+        carViewModel.getCarList()
+        swipe_refresh.isRefreshing = false
+    } // fun of makeSwipe
 
     private fun initViewModel()
     {

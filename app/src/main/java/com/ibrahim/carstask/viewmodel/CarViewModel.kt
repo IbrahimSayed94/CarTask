@@ -26,7 +26,7 @@ class CarViewModel : ViewModel() {
         getCarList()
     }
 
-    private fun getCarList() {
+     fun getCarList() {
         _networkState.postValue(NetworkState.LOADING)
 
         val compositeDisposable = CompositeDisposable()
