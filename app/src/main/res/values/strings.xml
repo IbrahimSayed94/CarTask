@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">CarListTask</string>
+
+
+    <string name="price">Price : </string>
+    <string name="mileage">Mileage : </string>
+    <string name="make">Make : </string>
+    <string name="fuel_type">Fuel type :</string>
+</resources>
